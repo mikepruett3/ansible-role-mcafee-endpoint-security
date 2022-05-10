@@ -16,14 +16,6 @@
     path: "/root/software/{{ package_name.split('-')[0] }}/{{ package_name }}"
   register: package
 
-#- name: "Download installer package from local repository"
-#  ansible.builtin.get_url:
-#    url: "{{ software_url }}/{{ package_name }}"
-#    dest: "/tmp/{{ package_name }}/"
-#    validate_certs: no
-#    mode: 0777
-#  when: package.stat.exists != True
-
 - name: "Download & Extract installer package from local repository"
   ansible.builtin.unarchive:
     src: "{{ software_url }}/{{ package_name }}"
@@ -33,8 +25,8 @@
     remote_src: yes
   when: package.stat.exists != True
 
-#- name: "Install package"
-#  ansible.builtin.command: "./{{ package_name }} -i"
-#  args:
-#    chdir: "/root/software/{{ package_name.split('_')[0] }}/"
-#    creates: /etc/ma.d/ma_environment.conf
+- name: "Install package"
+  ansible.builtin.command: "./install-mfetp.sh silent"
+  args:
+    chdir: "/root/software/{{ package_name.split('-')[0] }}/"
+    #creates: /etc/ma.d/ma_environment.conf
