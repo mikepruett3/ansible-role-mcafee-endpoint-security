@@ -27,7 +27,7 @@
 - name: "Download & Extract installer package from local repository"
   ansible.builtin.unarchive:
     src: "{{ software_url }}/{{ package_name }}"
-    dest: "/root/software/{{ package_name.split('_')[0] }}/"
+    dest: "/root/software/{{ package_name.split('-')[0] }}/"
     validate_certs: no
     mode: 0777
     remote_src: yes
