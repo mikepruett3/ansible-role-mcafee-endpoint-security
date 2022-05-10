@@ -15,7 +15,7 @@ Available variables are listed below, along with default values (see ```defaults
 
 ``` yaml
 software_url: "http://www.example.org"
-package_name: "mcafee-endpoint_10.7.9.tar.gz"
+package_name: "McAfeeTP-10.7.9-31-standalone.linux.tar.gz"
 ```
 
 ```software_url``` **(Required)** The URL that hosts the Installer package. This should be either **http** or **https**.
