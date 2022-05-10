@@ -1,2 +1,5 @@
 ---
 # defaults file for ansible-role-mcafee-endpoint-security
+
+software_url: "http://www.example.org"
+package_name: "McAfeeTP-10.7.9-31-standalone.linux.tar.gz"
