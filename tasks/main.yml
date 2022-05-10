@@ -29,4 +29,4 @@
   ansible.builtin.command: "./install-mfetp.sh silent"
   args:
     chdir: "/root/software/{{ package_name.split('-')[0] }}/"
-    #creates: /etc/ma.d/ma_environment.conf
+    creates: /var/McAfee/ens/esp/prefs.xml
