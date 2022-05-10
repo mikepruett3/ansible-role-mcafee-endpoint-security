@@ -24,13 +24,14 @@
 #    mode: 0777
 #  when: package.stat.exists != True
 
-- name: "Download installer package from local repository"
+- name: "Download & Extract installer package from local repository"
   ansible.builtin.unarchive:
     src: "{{ software_url }}/{{ package_name }}"
     dest: "/root/software/{{ package_name.split('_')[0] }}/"
     validate_certs: no
     mode: 0777
     remote_src: yes
+  when: package.stat.exists != True
 
 #- name: "Install package"
 #  ansible.builtin.command: "./{{ package_name }} -i"
