@@ -1,0 +1,5 @@
+---
+# Debian vars file for ansible-role-mcafee-endpoint-security
+
+packages:
+  - unzip
