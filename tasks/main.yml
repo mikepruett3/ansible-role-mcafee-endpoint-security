@@ -40,3 +40,8 @@
   args:
     chdir: "/root/software/{{ package_name.split('-')[0] }}/"
     creates: /var/McAfee/ens/esp/prefs.xml
+
+- name: "Disable On-Access Scanning"
+  ansible.builtin.command: "./mfetpcli --setoasglobalconfig --oas off"
+  args:
+    chdir: "/opt/McAfee/ens/tp/bin"
