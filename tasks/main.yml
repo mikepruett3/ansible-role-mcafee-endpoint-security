@@ -18,18 +18,18 @@
 
 - name: "Create software directory under root homedir, if it does not exist"
   ansible.builtin.file:
-    path: "/root/software/{{ package_name.split('-')[0] }}/"
+    path: "/root/software/mcafee-epo/"
     state: directory
 
 - name: "Check if installer package already exist"
   ansible.builtin.stat:
-    path: "/root/software/{{ package_name.split('-')[0] }}/{{ package_name }}"
+    path: "/root/software/mcafee-epo/{{ package_name }}"
   register: package
 
 - name: "Download & Extract installer package from local repository"
   ansible.builtin.unarchive:
     src: "{{ software_url }}/{{ package_name }}"
-    dest: "/root/software/{{ package_name.split('-')[0] }}/"
+    dest: "/root/software/mcafee-epo/"
     validate_certs: no
     mode: '0770'
     remote_src: yes
@@ -38,7 +38,7 @@
 - name: "Install package"
   ansible.builtin.command: "./install-mfetp.sh silent"
   args:
-    chdir: "/root/software/{{ package_name.split('-')[0] }}/"
+    chdir: "/root/software/mcafee-epo/"
     creates: /var/McAfee/ens/esp/prefs.xml
 
 - name: "Disable On-Access Scanning"
